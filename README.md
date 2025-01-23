@@ -5,7 +5,8 @@ Projet de cours pour gérer et classifier des dépenses bancaires.
 
 # Initialisation du projet : 
 1. Ouvrir le répertoire MyBank dans un terminal
-2. Lancer la commande *docker-compose up -d*
+2. Lancer la commande **docker-compose up -d**
+   
 Vous pourrez donc retrouver :
 - Le Front React ici : http://localhost:3000/
 - Le Back Symfony ici : http://localhost:8000/
