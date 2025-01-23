@@ -1,0 +1,30 @@
+# Ignorer les fichiers de versionnement
+.git
+.gitignore
+
+# Ignorer les dépendances locales (elles seront installées dans le conteneur)
+node_modules/
+
+# Ignorer les fichiers de build locaux
+dist/
+
+# Ignorer les fichiers de logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Ignorer les fichiers temporaires et systèmes
+.DS_Store
+Thumbs.db
+
+# Ignorer les configurations spécifiques à l'environnement local
+.env
+.env.*.local
+
+# Ignorer les fichiers Docker générés
+docker-compose.override.yml
+
+# Ignorer les dossiers inutiles pour l'image
+.vscode/
+.idea/

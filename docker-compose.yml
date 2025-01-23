@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./Front # Assurez-vous que votre frontend est dans le dossier ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./Back # Assurez-vous que votre Symfony est dans ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80" # Symfony sera accessible sur localhost:8000
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "mysql://root:@127.0.0.1:3306/myBank_db?serverVersion=8.3.0&charset=utf8mb4"
+
+  db:
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306" # Port MySQL par défaut
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: mybank_db
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data: # Volume pour persister les données MySQL

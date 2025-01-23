@@ -1,13 +1,15 @@
-// components/templates/MainLayout.jsx
+// components/templates/HomeLayout.jsx
 import React from 'react';
 import UserPortal from '../organisms/UserPortal';
+import OperationList from '../organisms/OperationList';
 
-const MainLayout = () => {
+const HomeLayout = () => {
   return (
     <section className="mainSection">
+      
         <UserPortal />
     </section>
   );
 };
 
-export default MainLayout;
+export default HomeLayout;

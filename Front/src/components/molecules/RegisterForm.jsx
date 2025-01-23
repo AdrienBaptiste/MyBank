@@ -13,7 +13,7 @@ const RegisterForm = ({ onRegister }) => {
             <Input className="portalInput" type="text" placeholder="Last Name" />
             <Input className="portalInput" type="text" placeholder="Email" />
             <Input className="portalInput" type="text" placeholder="Password" />
-            <Button className="portalBtn" label="Register" onClick={onRegister} />
+            <Button className="portalBtn" content="Register" onClick={onRegister} />
         </div>
     );
 };
