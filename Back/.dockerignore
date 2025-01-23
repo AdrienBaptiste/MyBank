@@ -1,0 +1,20 @@
+# Ignorer les fichiers de versionnement et d'environnement
+.git
+.gitignore
+.env.local
+.env.test.local
+.env.*.backup
+
+vendor/
+*.log
+
+node_modules/
+npm-debug.log
+yarn.lock
+.pnpm-debug.log
+.DS_Store
+
+/public/build/
+/public/uploads/
+
+docker-compose.override.yml

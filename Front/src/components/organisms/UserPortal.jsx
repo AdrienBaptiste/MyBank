@@ -4,6 +4,8 @@ import axios from 'axios';
 import LoginForm from '../molecules/LoginForm';
 import RegisterForm from '../molecules/RegisterForm';
 
+let loggedIn = false;
+
 const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -33,7 +35,7 @@ const handleLogin = async (e) => {
   };
 
 const handleRegister = () => {
-    console.log('REGISTERED');
+  loggedIn = true;
 };
 
 const UserPortal = () => {
