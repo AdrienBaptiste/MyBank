@@ -29,7 +29,7 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: mybank_db
     volumes:
-      - db_data:/var/lib/mysql
+      - mybank_db_data:/var/lib/mysql
 
 volumes:
-  db_data: # Volume pour persister les données MySQL
+  mybank_db_data: # Volume pour persister les données MySQL

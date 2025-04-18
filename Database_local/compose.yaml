@@ -1,0 +1,24 @@
+services:
+  db:
+    container_name: local_mybank_database
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306" # Port MySQL par défaut
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: mybank_db
+    volumes:
+      - mybank_db_data:/var/lib/mysql
+
+  phpMyAdmin:
+    container_name: local_mybank_phpmyadmin
+    image: phpmyadmin:latest
+    ports:
+      - "8080:80" # Port pour accéder à phpMyAdmin
+    environment:
+      PMA_HOST: db # Nom du service de la base de données
+      PMA_PORT: 3306 # Port MySQL par défaut
+
+volumes:
+  mybank_db_data: # Volume pour persister les données MySQL
