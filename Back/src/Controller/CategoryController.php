@@ -47,7 +47,7 @@ final class CategoryController extends AbstractController
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'operations' => $category->getOperations(),
+            'operations' => $category->getOperations(), // Correctly passing operations
         ]);
     }
 
