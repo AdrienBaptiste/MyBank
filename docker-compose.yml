@@ -2,7 +2,7 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: ./Front # Assurez-vous que votre frontend est dans le dossier ./frontend
+      context: ./Front
       dockerfile: Dockerfile
     ports:
       - "3000:80"
@@ -12,7 +12,7 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./Back # Assurez-vous que votre Symfony est dans ./backend
+      context: ./Back
       dockerfile: Dockerfile
     ports:
       - "8000:80" # Symfony sera accessible sur localhost:8000
@@ -31,5 +31,15 @@ services:
     volumes:
       - mybank_db_data:/var/lib/mysql
 
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8088:80"
+    environment:
+      PMA_HOST: db # Nom du service de la base de données
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ""
 volumes:
   mybank_db_data: # Volume pour persister les données MySQL
