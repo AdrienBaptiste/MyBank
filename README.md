@@ -22,6 +22,12 @@ Infra: Docker (frontend, backend, MySQL, phpMyAdmin)
 ## Variables d’environnement
 Frontend lit `VITE_API_URL` pour l’URL de l’API.
 
+Important (exécutions locales via Docker):
+- Backend: Docker consomme le fichier d’environnement `backend/.env.prod`.
+- Frontend: Docker consomme le fichier d’environnement `frontend/.env.production`.
+  
+Vous pouvez adapter ces fichiers pour vos tests locaux. En dehors de Docker (lancement en dev), utilisez plutôt `.env.local` côté backend et `frontend/.env` ou `frontend/.env.local` côté frontend.
+
 Exemple recommandé (pointant vers le backend en local):
 ```
 VITE_API_URL=http://localhost:8000
