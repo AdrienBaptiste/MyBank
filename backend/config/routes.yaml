@@ -1,0 +1,16 @@
+api_login:
+    path: /api/login
+    methods: POST
+
+api_platform:
+    resource: .
+    type: api_platform
+    prefix: /api
+
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+api_controllers:
+    resource: ../src/Controller/Api/
+    type: attribute

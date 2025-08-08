@@ -1,0 +1,62 @@
+services:
+  frontend:
+    container_name: react_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+#    volumes:
+#      - ./frontend:/usr/src/app:cached
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://symfony_api:8000
+
+  backend:
+    container_name: symfony_api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/var/www/html:cached
+
+# SWAP pour passer en dev
+#    environment:
+#      APP_ENV: dev
+#      APP_DEBUG: 1
+# SWAP pour passer en dev
+# SWAP pour passer en prod
+    environment:
+      APP_ENV: prod
+      APP_DEBUG: 0
+# SWAP pour passer en prod
+    ports:
+      - "8000:80"
+    depends_on:
+      - database
+
+  database:
+    container_name: mysql_db
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: project_mybank_db
+    volumes:
+      - mybank_db_data:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: db_admin_interface
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8088:80"
+    environment:
+      PMA_HOST: mysql_db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ""
+volumes:
+  mybank_db_data: # Volume pour persister les données MySQL

@@ -1,0 +1,45 @@
+# Node.js / React
+node_modules/
+build/
+*.log
+*.env
+.env.local
+.env.development
+.env.production
+.env.test
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Symfony / PHP
+/var/
+/vendor/
+*.log
+*.env
+.env.local
+.env.*.local
+*.cache
+*.lock
+
+# MySQL (par précaution, en cas de fichiers export ou dumps locaux)
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Miscellaneous
+/.history
+/.cache/
