@@ -1,20 +1,15 @@
-# Ignorer les fichiers de versionnement et d'environnement
-.git
-.gitignore
-.env.local
-.env.test.local
-.env.*.backup
+# Dépendances PHP
+/vendor
 
-vendor/
+# Fichiers d'environnement : ignorer tous sauf `.env` et `.env.example`
+!.env
+.env.*
+!.env.prod
+
+# Cache & logs Symfony
+/var/cache
+/var/log
+
+# Fichiers divers à exclure
 *.log
-
-node_modules/
-npm-debug.log
-yarn.lock
-.pnpm-debug.log
 .DS_Store
-
-/public/build/
-/public/uploads/
-
-docker-compose.override.yml
