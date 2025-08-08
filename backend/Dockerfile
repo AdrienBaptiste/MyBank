@@ -1,5 +1,5 @@
-# Utiliser PHP 8.3 avec Apache
-FROM php:8.3-apache
+# Utiliser PHP 8.4.8 avec Apache
+FROM php:8.4.8-apache
 
 # Activer les modules Apache nécessaires
 RUN a2enmod rewrite
@@ -36,14 +36,17 @@ RUN a2dissite 000-default && a2ensite 000-default
 # Fixer les permissions pour Apache
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
-# Installer les dépendances avec les dev-deps
-RUN composer install --prefer-dist --no-interaction
+# Installer les dépendances
+RUN composer install --no-scripts --prefer-dist --no-interaction
 
-# Pas de cache:clear ici, Symfony le fait dynamiquement en dev
-# Tu peux aussi ajouter une commande post-install si nécessaire
+# ✅ Copier ton script entrypoint
+COPY entrypoint.sh /entrypoint.sh
+
+# ✅ Rendre le script exécutable
+RUN chmod +x /entrypoint.sh
+
+# ✅ Définir le script comme point d’entrée
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Exposer le port Apache
 EXPOSE 80
-
-# Commande de démarrage Apache
-CMD ["apache2-foreground"]
