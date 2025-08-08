@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use App\DataProvider\CategoryCollectionDataProvider;
+use App\DataProcessor\CategoryDataProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,7 +25,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             provider: CategoryCollectionDataProvider::class
         ),
         new Get(),
-        new Post(security: "is_granted('ROLE_USER')"),
+        new Post(
+            security: "is_granted('ROLE_USER')",
+            processor: CategoryDataProcessor::class
+        ),
         new Put(security: "is_granted('ROLE_USER') and object.getUser() == user"),
         new Delete(security: "is_granted('ROLE_USER') and object.getUser() == user"),
     ]

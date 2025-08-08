@@ -18,7 +18,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
     security: "is_granted('ROLE_USER')",
     operations: [
         // Collection operations (GET /operations, POST /operations)
-        new Get(
+        new \ApiPlatform\Metadata\GetCollection(
+            provider: \App\DataProvider\OperationCollectionDataProvider::class,
             security: "is_granted('ROLE_USER')",
             securityMessage: 'You can only access your own operations.'
         ),

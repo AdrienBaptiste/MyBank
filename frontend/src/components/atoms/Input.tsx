@@ -8,9 +8,11 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
   className?: string;
+  required?: boolean;
+  step?: string;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, type = 'text', value, onChange, checked, className }) => {
+const Input: React.FC<InputProps> = ({ placeholder, type = 'text', value, onChange, checked, className, required, step }) => {
   return (
     <input
       type={type}
@@ -18,7 +20,9 @@ const Input: React.FC<InputProps> = ({ placeholder, type = 'text', value, onChan
       placeholder={placeholder}
       onChange={onChange}
       checked={checked}
-      className={className}
+      className={className || 'portalInput mb-2'}
+      required={required}
+      step={step}
     />
   );
 };

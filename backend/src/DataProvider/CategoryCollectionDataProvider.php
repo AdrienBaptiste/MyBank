@@ -31,13 +31,13 @@ class CategoryCollectionDataProvider implements ProviderInterface
             return [];
         }
 
+        // Retourner toutes les catégories appartenant à l'utilisateur connecté
         $qb = $this->em->createQueryBuilder();
         $qb->select('c')
             ->from(Category::class, 'c')
-            ->innerJoin('c.operations', 'o')
-            ->where('o.user = :user')
+            ->where('c.user = :user')
             ->setParameter('user', $user)
-            ->groupBy('c.id');
+            ->orderBy('c.title', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

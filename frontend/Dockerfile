@@ -22,6 +22,9 @@ FROM nginx:1.23
 # Copier les fichiers construits (dossier dist) dans le dossier Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
+# Copier la configuration nginx personnalisée pour gérer les routes SPA
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Exposer le port 80
 EXPOSE 80
 

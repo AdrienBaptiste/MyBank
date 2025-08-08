@@ -6,6 +6,7 @@ RUN a2enmod rewrite
 
 # Installer les extensions PHP nécessaires
 RUN apt-get update && apt-get install -y \
+    bash \
     libicu-dev \
     libzip-dev \
     unzip \
